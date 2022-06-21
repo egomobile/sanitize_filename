@@ -59,14 +59,14 @@ String sanitizeFilename(String input, {String replacement = ''}) {
           ),
           replacement)
       // reservedRe
-      .replaceAll(RegExp(r'^\.+$'), replacement)
+      .replaceFirst(RegExp(r'^\.+$'), replacement)
       // windowsReservedRe
-      .replaceAll(
+      .replaceFirst(
           RegExp(r'^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$',
-              caseSensitive: true),
+              caseSensitive: false),
           replacement)
       // windowsTrailingRe
-      .replaceAll(RegExp(r'[\. ]+$'), replacement);
+      .replaceFirst(RegExp(r'[\. ]+$'), replacement);
 
   if (result.length > 255) {
     return result.substring(0, 255);

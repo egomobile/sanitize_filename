@@ -1,6 +1,6 @@
 name: sanitize_filename
 description: Replaces characters in strings that are illegal/unsafe for filenames.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/egomobile/sanitize_filename
 
 environment:
