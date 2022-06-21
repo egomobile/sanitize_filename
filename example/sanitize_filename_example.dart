@@ -21,6 +21,8 @@ void main() {
   final safeUserInput1 = sanitizeFilename(unsafeUserInput);
   final safeUserInput2 = sanitizeFilename(unsafeUserInput, replacement: '-');
 
+  // "~.sshauthorized_keys"
   print("safeUserInput1: $safeUserInput1");
+  // "~-.-ssh-authorized_keys"
   print("safeUserInput2: $safeUserInput2");
 }
