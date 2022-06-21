@@ -17,9 +17,17 @@ jobs:
         run: dart pub get
       - name: Run tests
         run: dart test
-      - name: 'Publish package'
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          dartVersion: '2.17.1'
-          accessToken: ${{ secrets.PUB_DEV_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.PUB_DEV_REFRESH_TOKEN }}
+      - name: Setup credentials
+        run: | 
+          mkdir -p ~/.pub-cache 
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.PUB_DEV_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.PUB_DEV_REFRESH_TOKEN }}",
+            "tokenEndpoint": "https://accounts.google.com/o/oauth2/token"
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": 1655837829848
+          }
+          EOF
+      - name: Publish package
+        run: dart pub publish -f
