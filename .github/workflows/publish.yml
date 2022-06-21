@@ -20,14 +20,6 @@ jobs:
       - name: Setup credentials
         run: | 
           mkdir -p ~/.pub-cache 
-          cat <<EOF > ~/.pub-cache/credentials.json
-          {
-            "accessToken":"${{ secrets.PUB_DEV_ACCESS_TOKEN }}",
-            "refreshToken":"${{ secrets.PUB_DEV_REFRESH_TOKEN }}",
-            "tokenEndpoint": "https://accounts.google.com/o/oauth2/token"
-            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-            "expiration": 1655837829848
-          }
-          EOF
+          echo '{"accessToken":"${{ secrets.PUB_DEV_ACCESS_TOKEN }}","refreshToken":"${{ secrets.PUB_DEV_REFRESH_TOKEN }}","tokenEndpoint":"https://accounts.google.com/o/oauth2/token","scopes":["openid","https://www.googleapis.com/auth/userinfo.email"],"expiration":1655837829848}' > ~/.pub-cache/credentials.json
       - name: Publish package
         run: dart pub publish -f
