@@ -8,7 +8,7 @@ jobs:
   check-pr:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: google/dart:2.17-sdk
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
