@@ -9,7 +9,7 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:2.17-sdk
+      image: google/dart:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
